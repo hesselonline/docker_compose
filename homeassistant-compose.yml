@@ -1,0 +1,32 @@
+name: homeassistant
+version: '3'
+services:
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto:latest
+    restart: always
+    volumes:
+      - /srv/docker/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    network_mode: bridge
+    ports:
+      - 1883:1883  
+  nodered:
+    container_name: nodered
+    image: nodered/node-red:latest
+    restart: always
+    volumes:
+      - /srv/docker/node_red/data:/data
+    network_mode: bridge
+    ports:
+      - 1880:1880
+  esphome:
+    container_name: esphome
+    image: esphome/esphome:latest
+    restart: always
+    volumes:
+      - /mnt/ds920_docker/esphome:/config
+    environment:
+      - TZ=Europe/Amsterdam
+      - USERNAME=${esphome_username}
+      - PASSWORD=${esphome_password}
+
