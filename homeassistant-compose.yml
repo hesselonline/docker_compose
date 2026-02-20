@@ -54,6 +54,7 @@ services:
   ebusd:
     container_name: ebusd
     image: john30/ebusd
+    restart: always
     network_mode: host
     depends_on:
         mosquitto:
@@ -90,3 +91,6 @@ services:
     environment:
       - TZ=Europe/Amsterdam
     network_mode: host
+    depends_on:
+        mosquitto:
+          condition: service_started
