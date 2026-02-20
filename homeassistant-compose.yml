@@ -1,6 +1,28 @@
 name: homeassistant
 version: '3'
 services:
+  homeassistant:
+    container_name: homeassistant
+    image: homeassistant/home-assistant:latest
+    restart: always
+    volumes:
+      - /srv/docker/homeassistant/config:/config
+      - /mnt/ds920_docker/homeassistant/backup:/config/backups
+      - /mnt/ds920_docker/certificate:/le-ssl
+    devices:
+      - /dev/ttyUSB0
+    environment:
+      - TZ=Europe/Amsterdam
+    network_mode: host
+    depends_on:
+        mosquitto:
+          condition: service_started
+        zwavejs:
+          condition: service_started
+        esphome:
+          condition: service_started
+        ebusd:
+          condition: service_started
   mosquitto:
     container_name: mosquitto
     image: eclipse-mosquitto:latest
