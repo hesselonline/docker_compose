@@ -12,5 +12,6 @@ services:
       - 8880:8880
       - 3478:3478/udp
     volumes:
-      - /mnt/ds920_docker/unifi:/unifi:rw
+      - /srv/docker/unifi:/unifi:rw
+      - /mnt/ds920_docker/unifi/backup:/unifi/data/backup:rw
     restart: always
