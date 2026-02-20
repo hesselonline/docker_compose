@@ -29,4 +29,31 @@ services:
       - TZ=Europe/Amsterdam
       - USERNAME=${esphome_username}
       - PASSWORD=${esphome_password}
-
+  ebusd:
+    container_name: ebusd
+    image: john30/ebusd
+    network_mode: host
+    depends_on:
+        mosquitto:
+          condition: service_started
+    volumes:
+      - /mnt/ds920_docker/ebusd/:/ebus/cfg
+    environment:
+      - EBUSD_MQTTHOST=192.168.2.246
+      - EBUSD_MQTTPORT=1883
+      - EBUSD_MQTTINT=/ebus/cfg/mqtt/mqtt-hassio.cfg
+      - EBUSD_MQTTJSON=
+      - EBUSD_MQTTTOPIC=ebusd/%circuit/%name 
+      - EBUSD_DEVICE=enh:192.168.2.210:3335
+      - EBUSD_PORT=8128
+      - EBUSD_HTTPPORT=8129
+      - EBUSD_CONFIGPATH=/ebus/cfg/ebus
+      - EBUSD_LOG=all:debug
+      - EBUSD_POLLINTERVAL=30
+      - EBUSD_ACQUIRERETRIES=5
+      - EBUSD_SENDRETRIES=10
+      - EBUSD_SCANRETRIES=5
+      - EBUSD_ENABLEHEX=
+      - EBUSD_RECEIVETIMEOUT=200000
+      - EBUSD_LATENCY=400000
+      - EBUSD_ACQUIRETIMEOUT=100000
