@@ -57,3 +57,14 @@ services:
       - EBUSD_RECEIVETIMEOUT=200000
       - EBUSD_LATENCY=400000
       - EBUSD_ACQUIRETIMEOUT=100000
+  zwavejs:
+    container_name: zwavejs
+    image: zwavejs/zwavejs2mqtt:latest
+    restart: always
+    volumes:
+      - /mnt/ds920_docker/zwavejs:/usr/src/app/store
+    devices:
+      - /dev/ttyACM0
+    environment:
+      - TZ=Europe/Amsterdam
+    network_mode: host
