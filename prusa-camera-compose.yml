@@ -1,0 +1,13 @@
+name: prusa-camera
+services:
+  prusa-camera:
+    image: linuxserver/ffmpeg
+    restart: always
+    entrypoint: /bin/bash
+    command: /upload.sh
+    environment:
+      RTSP_URL: ${RTSP_URL}
+      FINGERPRINT: ${FINGERPRINT}
+      TOKEN: ${TOKEN}
+    volumes:
+      - /mnt/ds920_docker/prusa-camera/upload.sh:/upload.sh
