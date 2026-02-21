@@ -8,7 +8,7 @@ services:
     volumes:
       - /srv/docker/homeassistant/config:/config
       - /mnt/ds920_docker/homeassistant/backup:/config/backups
-      - /mnt/ds920_docker/certificate:/le-ssl
+      - /mnt/ds920_files/certificates/hesselonline.nl:/le-ssl
     devices:
       - /dev/ttyUSB0
     environment:
