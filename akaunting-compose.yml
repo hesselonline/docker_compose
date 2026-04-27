@@ -10,7 +10,7 @@ services:
       - /srv/docker/akaunting:/var/www/html
     restart: unless-stopped
     environment:
-      - AKAUNTING_SETUP
+      - AKAUNTING_SETUP=${akaunting_setup}
       - APP_URL=${app_url}
       - LOCALE=nl-NL
       - DB_HOST=akaunting-db
