@@ -1,0 +1,45 @@
+name: akaunting
+version: '3.7'
+services:
+  akaunting:
+    container_name: akaunting
+    image: docker.io/akaunting/akaunting:latest
+    build:
+      context: .
+    ports:
+      - 8080:80
+    volumes:
+      - /srv/docker/akaunting:/var/www/html
+    restart: unless-stopped
+    environment:
+      - AKAUNTING_SETUP
+      - APP_URL=${app_url}
+      - LOCALE=nl-NL
+      - DB_HOST=akaunting-db
+      - DB_PORT=3306
+
+      - DB_NAME=akaunting
+      - DB_USERNAME=admin
+      - DB_PASSWORD=${database_password}
+
+      - DB_PREFIX=${database_prefix}
+
+      - COMPANY_NAME=${company_name}
+      - COMPANY_EMAIL=${company_email}
+
+      - ADMIN_EMAIL=${admin_email}
+      - ADMIN_PASSWORD=${admin_password}
+    depends_on:
+      - akaunting-db
+
+  akaunting-db:
+    container_name: akaunting-db
+    image: mariadb
+    volumes:
+      - /srv/docker/akaunting-db:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=akaunting
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=${database_password}
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
