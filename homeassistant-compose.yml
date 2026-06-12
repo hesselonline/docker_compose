@@ -46,7 +46,7 @@ services:
     image: esphome/esphome:latest
     restart: always
     volumes:
-      - /mnt/ds920_docker/esphome:/config
+      - /srv/docker/esphome:/config
     environment:
       - TZ=Europe/Amsterdam
       - USERNAME=${esphome_username}
