@@ -51,6 +51,8 @@ services:
       - TZ=Europe/Amsterdam
       - USERNAME=${esphome_username}
       - PASSWORD=${esphome_password}
+    ports:
+      - 6052:6052
   ebusd:
     container_name: ebusd
     image: john30/ebusd
