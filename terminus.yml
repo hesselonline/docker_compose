@@ -11,7 +11,7 @@ services:
             - APP_URL="http://192.168.2.246:4567"
             - PHP_OPCACHE_ENABLE=1
             - TRMNL_PROXY_REFRESH_MINUTES=15
-            - DB_DATABASE=/database/storage/database.sqlite
+            - DB_DATABASE=database/storage/database.sqlite
         volumes:
             - database:/var/www/html/database/storage
             - storage:/var/www/html/storage/app/public/images/generated
