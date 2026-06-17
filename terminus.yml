@@ -8,7 +8,7 @@ services:
             # Generate the APP_KEY with `echo "base64:$(openssl rand -base64 32)"`
             - APP_KEY=CwMGn/77mWhrG+7GYkvUn8flXXnpbT/ryTaL5dX/Gfo=
             # Base URL of the application
-            - APP_URL="larapaper.lab.hesselathome.nl"
+            # - APP_URL="larapaper.lab.hesselathome.nl"
             - PHP_OPCACHE_ENABLE=1
             - TRMNL_PROXY_REFRESH_MINUTES=15
             - DB_DATABASE=database/storage/database.sqlite
