@@ -13,6 +13,6 @@ services:
             - TRMNL_PROXY_REFRESH_MINUTES=15
             - DB_DATABASE=database.sqlite
         volumes:
-            - /srv/docker/larapaper/database:/var/www/html/database/storage
-            - /srv/docker/larapaper/storage:/var/www/html/storage/app/public/images/generated
+            - /srv/docker/larapaper/database/:/var/www/html/database/storage
+            - /srv/docker/larapaper/storage/:/var/www/html/storage/app/public/images/generated
         restart: unless-stopped
