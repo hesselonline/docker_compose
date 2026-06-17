@@ -11,11 +11,8 @@ services:
             # - APP_URL="larapaper.lab.hesselathome.nl"
             - PHP_OPCACHE_ENABLE=1
             - TRMNL_PROXY_REFRESH_MINUTES=15
-            - DB_DATABASE=database/storage/database.sqlite
+            - DB_DATABASE=/var/html/database/storage/database.sqlite
         volumes:
-            - database:/var/www/html/database/storage
-            - storage:/var/www/html/storage/app/public/images/generated
+            - /srv/docker/larapaper/database:/var/www/html/database/storage
+            - /srv/docker/larapaper/storage:/var/www/html/storage/app/public/images/generated
         restart: unless-stopped
-volumes:
-    database:/srv/docker/larapaper/database
-    storage:/srv/docker/larapaper/storage
