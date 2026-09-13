@@ -3,7 +3,7 @@ version: '3'
 services:
   homeassistant:
     container_name: homeassistant
-    image: homeassistant/home-assistant:latest
+    image: homeassistant/home-assistant:2026.8.3
     restart: always
     volumes:
       - /srv/docker/homeassistant/config:/config
